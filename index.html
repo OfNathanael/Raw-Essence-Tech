@@ -246,8 +246,9 @@
        ================================================================ -->
 
     <!-- ── App bundle (deferred) ─────────────────────────────────-- -->
-    <!-- Build steps: npm install && npm run build -->
-    <script src="dist/bundle.js" defer></script>
+    <!-- This file lives at dist/index.html alongside dist/bundle.js,
+         so the path is relative ("bundle.js"), NOT "dist/bundle.js" -->
+    <script src="bundle.js" defer></script>
 
     <!-- ── Load non-critical integration scripts after first paint/idle --- -->
     <script>

@@ -4,13 +4,14 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "build": "npx esbuild --bundle src/entry.js --outfile=dist/bundle.js --format=iife --platform=browser --loader:.js=jsx --sourcemap --target=es2018"
+    "build": "npx esbuild --bundle src/entry.js --outfile=dist/bundle.js --format=iife --platform=browser --loader:.js=jsx --sourcemap --target=es2018 && npx shx cp index.html styles.css design.ico dist/"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "esbuild": "^0.28.1"
+    "esbuild": "^0.28.1",
+    "shx": "^0.3.4"
   }
 }
