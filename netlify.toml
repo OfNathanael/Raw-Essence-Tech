@@ -1,0 +1,10 @@
+# Netlify configuration
+[build]
+  # Install dependencies and run the project build
+  command = "npm ci && npm run build"
+  # Publish directory: keep at project root since index.html is at repo root
+  publish = "."
+
+# Optional: set environment variables here or configure in Netlify UI
+#[build.environment]
+#  NODE_VERSION = "18"

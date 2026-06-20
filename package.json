@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "raw-essence-tech",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npx esbuild --bundle src/entry.js --outfile=dist/bundle.js --format=iife --platform=browser --loader:.js=jsx --sourcemap --target=es2018"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  }
+}
