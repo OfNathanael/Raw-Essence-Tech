@@ -339,7 +339,7 @@ function StoreView({
               />
             </button>
             <img
-              src="logo.png"
+              src="design.ico"
               alt="Brand Logo"
               style={{ height: 38, width: "auto", objectFit: "contain" }}
               onError={(e) => (e.target.style.display = "none")}
