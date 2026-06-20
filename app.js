@@ -212,12 +212,11 @@ function App() {
       )}
 
       {view === "login" && (
-        <LoginView
-          settings={settings}
-          onSuccess={() => setView("admin")}
-          onBack={() => setView("store")}
-        />
-      )}
+  <LoginView
+    onSuccess={() => setView("admin")}
+    onBack={() => setView("store")}
+  />
+)}
 
       {view === "admin" && (
         <AdminView

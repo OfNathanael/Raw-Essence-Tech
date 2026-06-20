@@ -1,20 +1,41 @@
 // =============================================================
 //  login.js
 //  LoginView — password gate for the Admin panel.
+//  Password is verified server-side via /api/admin-login
+//  (checked against the ADMIN_PASSWORD environment variable),
+//  never compared in the browser.
 //  Depends on: constants.js, icons.js
 // =============================================================
 import React, { useState, useEffect, useRef } from "react";
 
-function LoginView({ settings, onSuccess, onBack }) {
+function LoginView({ onSuccess, onBack }) {
   const [pass, setPass] = useState("");
   const [err, setErr] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
-    if (pass === (settings.adminPass || "admin123")) {
-      onSuccess();
-    } else {
+  const handleLogin = async () => {
+    if (loading) return;
+    setLoading(true);
+    try {
+      const res = await fetch("/api/admin-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: pass }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.success) {
+        sessionStorage.setItem("adminPassword", pass);
+        onSuccess();
+      } else {
+        setErr(true);
+        setTimeout(() => setErr(false), 2000);
+      }
+    } catch (e) {
       setErr(true);
       setTimeout(() => setErr(false), 2000);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -100,14 +121,16 @@ function LoginView({ settings, onSuccess, onBack }) {
         <button
           className="btn btn-gold"
           onClick={handleLogin}
+          disabled={loading}
           style={{
             width: "100%",
             justifyContent: "center",
             padding: "13px",
             fontSize: 15,
+            opacity: loading ? 0.7 : 1,
           }}
         >
-          <Icon name="lock" size={16} /> Login
+          <Icon name="lock" size={16} /> {loading ? "Checking…" : "Login"}
         </button>
         <button
           className="btn-ghost"

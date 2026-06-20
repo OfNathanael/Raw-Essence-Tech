@@ -1,9 +1,9 @@
 // =============================================================
 //  settings-panel.js
 //  SettingsPanel — admin settings tab.
-//  Shows store name, WhatsApp number, integration status,
-//  and admin password. Credentials live in the .js config
-//  files, not in this UI.
+//  Shows store name, WhatsApp number, and integration status.
+//  Admin password is now managed via the ADMIN_PASSWORD
+//  environment variable on the server, NOT through this UI.
 //  Depends on: constants.js, icons.js, firebase.js, imgbb.js, emailjs.js
 // =============================================================
 
@@ -46,7 +46,7 @@ function SettingsPanel({ settings, onSave }) {
         Settings
       </h2>
       <p style={{ color: "var(--muted)", fontSize: 13, marginBottom: 28 }}>
-        Manage your store details and password.
+        Manage your store details.
       </p>
 
       <div style={{ display: "grid", gap: 20, maxWidth: 560 }}>
@@ -234,31 +234,12 @@ function SettingsPanel({ settings, onSave }) {
           </div>
         </div>
 
-        {/* ── Admin Password ── */}
-        <div className="card" style={{ padding: 20 }}>
-          <h3
-            style={{
-              fontFamily: "DM Sans",
-              fontWeight: 700,
-              fontSize: 15,
-              marginBottom: 8,
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-            }}
-          >
-            <Icon name="lock" size={16} /> Admin Password
-          </h3>
-          <input
-            id="settings-adminPass"
-            name="adminPass"
-            className="input"
-            type="password"
-            value={form.adminPass || ""}
-            onChange={(e) => set("adminPass", e.target.value)}
-            placeholder="New password"
-          />
-        </div>
+        {/* ── Admin Password ──
+             Removed from this UI. The admin password is now stored
+             server-side as the ADMIN_PASSWORD environment variable
+             on Vercel and verified by /api/admin-login and
+             /api/admin-write. To change it, update ADMIN_PASSWORD
+             in Vercel → Settings → Environment Variables and redeploy. */}
 
         <button
           className="btn btn-gold"

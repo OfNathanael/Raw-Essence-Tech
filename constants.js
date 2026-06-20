@@ -28,7 +28,6 @@ const DEFAULT_SETTINGS = {
   brandName: "Raw Essence",
   storeName: "Raw Essence Tech",
   whatsapp: "+2348136899180",
-  adminPass: "admin1234",
 };
 
 // ── Currency formatter (Nigerian Naira) ────────────────────────────────────────
