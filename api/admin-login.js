@@ -7,4 +7,6 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true });
   }
   return res.status(401).json({ success: false, error: "Incorrect password" });
+console.log("ADMIN_PASSWORD is set:", !!process.env.ADMIN_PASSWORD);
+console.log("ADMIN_PASSWORD length:", (process.env.ADMIN_PASSWORD || "").length);
 }
