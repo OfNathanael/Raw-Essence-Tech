@@ -842,6 +842,7 @@ function StoreView({
                       id="search-input"
                       name="search"
                       className="input"
+                      autoComplete="off"
                       placeholder="Search products…"
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
@@ -920,32 +921,34 @@ function StoreView({
                       <option value="new">New</option>
                       <option value="used">Used</option>
                     </select>
-                    <label
-                      htmlFor="price-min"
-                      style={{ color: "var(--muted)", fontSize: 13 }}
-                    >
-                      Price:
-                    </label>
-                    <input
-                      id="price-min"
-                      name="priceMin"
-                      className="input"
-                      type="number"
-                      placeholder="Min"
-                      value={priceMin}
-                      onChange={(e) => setPriceMin(e.target.value)}
-                      style={{ width: 90 }}
-                    />
-                    <input
-                      id="price-max"
-                      name="priceMax"
-                      className="input"
-                      type="number"
-                      placeholder="Max"
-                      value={priceMax}
-                      onChange={(e) => setPriceMax(e.target.value)}
-                      style={{ width: 90 }}
-                    />
+                    <label htmlFor="price-min" style={{ color: "var(--muted)", fontSize: 13 }}>
+  Price:
+</label>
+<input
+  id="price-min"
+  name="priceMin"
+  className="input"
+  type="number"
+  autoComplete="off"
+  placeholder="Min"
+  value={priceMin}
+  onChange={(e) => setPriceMin(e.target.value)}
+  style={{ width: 90 }}
+/>
+<label htmlFor="price-max" style={{ position: "absolute", left: -9999 }}>
+  Maximum price
+</label>
+<input
+  id="price-max"
+  name="priceMax"
+  className="input"
+  type="number"
+  autoComplete="off"
+  placeholder="Max"
+  value={priceMax}
+  onChange={(e) => setPriceMax(e.target.value)}
+  style={{ width: 90 }}
+/>
                     <button
                       className="btn btn-outline"
                       onClick={() => {

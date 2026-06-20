@@ -101,6 +101,7 @@ function LoginView({ onSuccess, onBack }) {
           id="login-pass"
           name="password"
           type="password"
+          autoComplete="current-password"
           className="input"
           placeholder="Password"
           value={pass}
